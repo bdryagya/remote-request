@@ -45,6 +45,18 @@ class Response implements RemoteResponseContract
         return $this->call_status;
     }
 
+    public function getContents()
+    {
+        $remote_response = $this->getBody();
+
+        return $remote_response->getBody()->getContents();
+    }
+
+    public function getException()
+    {
+        return $this->getBody()->getMessage();
+    }
+
     public function getBody()
     {
         return $this->body;
